@@ -31,14 +31,14 @@ class Adapter(items : MutableList<MyItem>) : RecyclerView.Adapter<RecyclerView.V
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if(items[position].viewType==FavoriteViewType.TRUE){
             (holder as FavoriteViewHolder).name.text=items[position].name
-            (holder as FavoriteViewHolder).tel.text=items[position].tel
-            (holder as FavoriteViewHolder).img.setImageResource(items[position].img)
-            (holder as FavoriteViewHolder).favorite.text="favorite"
+            holder.tel.text=items[position].tel
+            holder.img.setImageResource(items[position].img)
+            holder.favorite.text="favorite"
         }else {
             (holder as NonViewHolder).name.text=items[position].name
-            (holder as NonViewHolder).tel.text=items[position].tel
-            (holder as NonViewHolder).img.setImageResource(items[position].img)
-            (holder as NonViewHolder).favorite.text="non-favorite"
+            holder.tel.text=items[position].tel
+            holder.img.setImageResource(items[position].img)
+            holder.favorite.text="non-favorite"
         }
     }
 
