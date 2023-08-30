@@ -29,7 +29,7 @@ class Adapter(items : MutableList<MyItem>) : RecyclerView.Adapter<RecyclerView.V
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if(items[position].viewType==FavoriteViewType.TRUE){
+        if(items[position].viewType){
             (holder as FavoriteViewHolder).name.text=items[position].name
             holder.tel.text=items[position].tel
             holder.img.setImageResource(items[position].img)
@@ -43,7 +43,10 @@ class Adapter(items : MutableList<MyItem>) : RecyclerView.Adapter<RecyclerView.V
     }
 
     override fun getItemViewType(position: Int): Int {
-        return items[position].viewType
+        return when(items[position].viewType) {
+            true -> 1
+            false -> 0
+        }
     }
 
     inner class FavoriteViewHolder(private val binding : FavoriteRecyclerviewBinding) : RecyclerView.ViewHolder(binding.root){
